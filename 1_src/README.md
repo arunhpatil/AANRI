@@ -26,9 +26,11 @@ The final genotype used are named with prefix `aanri_072826_genotype_qc` and the
     ├── libd_FY23_FY24_FY25_MAF05_variantList.txt
     └── update_IIDs.txt
 ```
+</Br>
 
-1. Uniformity in Genotype naming method:<br><br>
-   A. FID and IID naming:<br>
+**Uniformity in Genotype naming method:**
+
+A. FID and IID naming:<br>
 The names (conventionally consider family `FID` and individual IDs `IID` by PLINK) where FID is denoted with `0` and IID for the corresponding donar `D0000_S0`. This FID is replaced with IID with only donor information and not sample, i.e., split the IID at "_" and use the 0th element as FID. This was achived using the following awk script:
 ```
 awk '{
@@ -51,10 +53,13 @@ plink2 \
   --make-bed \
   --out genotype_FY23_FY24_FY25_MAF05
 ```
-2. Converting SNP coordinates to dbSNP ID (rsID). <br><br>
+<br>
 
-  Obtaining and formatting dbSNP 157 from NCBI:
+**Converting SNP coordinates to dbSNP ID (rsID):** <br>
+
+
   ```
+Obtaining and formatting dbSNP 157 from NCBI:
 Download:
 wget -O dbSNP157.vcf.gz "https://ftp.ncbi.nih.gov/snp/latest_release/VCF/GCF_000001405.40.gz"
 tabix -p vcf dbSNP157.vcf.gz 

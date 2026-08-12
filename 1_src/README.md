@@ -104,6 +104,87 @@ plink2 \
 
 
 ## preparatory - phenotype processing
+
+The h5ad file was initially processed to include:
+a. FID and IID columns in the .obs (observations) by matching the BrNums, so the downstream process is easier for filtering cells and perform TWAS analysis pipeline
+b. The .var is updated to include gene names and gene coordinates. This is required to fetch gene coordinates as input for GCTA and others. So, the first four columns include the #chr, start, end, and gene_id columns.  
+
+The updated h5ad file is stored in the following path:
+`/dcs04/lieber/hwanglab/Arun/snRNA_aanri/2_data`
+
+1. Filters used for samples and genes.
+The filtering of samples, genes, creating residual matrices, and generating covariates is in script `AANRI/1_src/1_createTWAS_ingredients.py`.
+
+I have two directories one for (logCPM -> residuals using linear model), `residuals` and another for `regular` where the logCPM is directly used for TWAS analsis. While the later is for test purposes only, and we rely our analysis on the residuals. 
+
+The analysis is carried out across 6 cell types from three brain regions, the pipeline is implemented 17 times. (Except one where the caudate - excitatory cells were not included - discussed below)
+`adata[(adata.obs['Region'] == region) & (adata.obs['Celltype_aggregated'] == required_ct) & (adata.obs['psbulk_cells']  >= 10) & (adata.obs['psbulk_counts'] >=1000)].copy()`
+
+Steps:
+First, the raw counts were converted to logCPM values.
+Apply gene filters
+(a) expressed in >=20% of samples
+(b) exclude genes with non-zero variance
+(c) mean logCPM >= 0.5
+
+Covariates:
+
+Generate and include expression PCs n=3
+
+
+```
+excitatory_cells = ['Ex:CA1', 'Ex:CA2_4', 'Ex:GC', 'Ex:L2_3_IT', 'Ex:L4_IT','Ex:L5_6_NP', 'Ex:L5_ET', 'Ex:L5_IT', 'Ex:L6_CT', 'Ex:L6_IT', 'Ex:L6_IT_Car3', 'Ex:L6b', 'Ex:Limbic-IT']
+inhibitory_cells = ['In:CCK', 'In:CGE', 'In:CR', 'In:Chandelier', 'In:FS', 'In:LAMP5_CGE', 'In:LAMP5_MGE', 'In:LTS', 'In:Lamp5', 'In:Lamp5_Lhx6', 'In:MGE', 'In:MSN_D1', 'In:MSN_D1_D2', 'In:MSN_D2', 'In:Pax6', 'In:Pvalb', 'In:Sncg', 'In:Sst', 'In:Sst_Chodl', 'In:Vip']
+cellCovariateDict = {'Astrocyte':'Astrocyte', 'Choroid_plexus':'Choroid_plexus', 'Endothelial':'Endothelial', 'Ependymal':'Ependymal', 'Excitatory_neuron':excitatory_cells, 'Inhibitory_neuron':inhibitory_cells, 'Lymphoid':'Lymphoid', 'Microglia':'Microglia', 'OPC':'OPC', 'Oligodendrocyte':'Oligodendrocyte', 'Vascular_stromal':'Pericyte'}
+```
+
+```
+categorical_cols = ["Sex", "FY"]
+
+for col in categorical_cols:
+    covars_model[col] = (covars_model[col].astype("category"))
+
+covars_model = pd.get_dummies(covars_model, columns=categorical_cols, drop_first=True, dtype=int)
+
+# log-transform pseudobulk cell counts
+covars_model["psbulk_cells"] = np.log1p(covars_model["psbulk_cells"])
+
+continuous_cols = ["AgeDeath", "PMI", "psbulk_cells", "pct_counts_mt","pct_counts_ribo",]
+
+if isinstance(ct_props, list):
+    continuous_cols.extend(ct_props)
+else:
+    continuous_cols.append(ct_props)
+```
+
+Remvoe constant covariates where covar[col].nunique() == 1 and Std.dev covar[col].std() == 0.
+
+
+2. Covariates used when using expression residuals of logCPM values - termed as analysis = `residuals`. 
+This is the default workflow - similar to that employed in miRQTL analysis. 
+We are only regresssing out continuous variables (including cell type proportions). While only genotype and expression PCs (n=3) along with categorical variables such as Sex and FY was included as covariates for GCTA and TWAS analysis.
+
+3. Covariates used when using logCPM values as expression matrix - termed as analysis = `regular`. 
+This is only used to check the differences in TWAS results, compared to residuals.
+Since no covariates are adjusted at this stage, all the continuous and categorical variables were passed as covariates during GCTA and TWAS analysis.   
+
+
+**Error in Caudate - Excitatory neurons:** 
+With the above filters applied to caudate - ExNeurons, there are no samples left to process. Hence this particular cell type was removed from the analysis. 
+ 
+```
+# When I ran manually, I found that the error lies in caudate region and Excitatory neuros:
+# >>> region
+# 'caudate'
+# >>> required_ct
+# 'Excitatory_neuron'
+# adata[(adata.obs["Region"] == region) & (adata.obs["Celltype_aggregated"] == required_ct) & (
+# adata.obs["psbulk_cells"] >= 10)].shape
+# (0, 34835)
+# >>> adata[(adata.obs["Region"] == region) & (adata.obs["Celltype_aggregated"] == required_ct) & (adata.obs["psbulk_counts"] >= 1000)].shape
+# (0, 34835)
+```
+
 ## GCTA - template code and summary
 ## TWAS: Fusion Weights - template code and summary
 ## TWAS: Fusion associations - template code and summary

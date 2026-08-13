@@ -102,6 +102,8 @@ plink2 \
 
   ```
 
+Total number of SNPs before conversion: `8,493,350` FY23_FY24_FY25_MAF05.bim
+Total number of SNPs after conversion: `8,493,350` aanri_072826_genotype_qc.bim
 
 ## preparatory - phenotype processing
 

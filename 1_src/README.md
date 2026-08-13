@@ -138,9 +138,12 @@ Generate and include expression PCs n=3
 
 
 ```
+ct_props = dict()
 excitatory_cells = ['Ex:CA1', 'Ex:CA2_4', 'Ex:GC', 'Ex:L2_3_IT', 'Ex:L4_IT','Ex:L5_6_NP', 'Ex:L5_ET', 'Ex:L5_IT', 'Ex:L6_CT', 'Ex:L6_IT', 'Ex:L6_IT_Car3', 'Ex:L6b', 'Ex:Limbic-IT']
 inhibitory_cells = ['In:CCK', 'In:CGE', 'In:CR', 'In:Chandelier', 'In:FS', 'In:LAMP5_CGE', 'In:LAMP5_MGE', 'In:LTS', 'In:Lamp5', 'In:Lamp5_Lhx6', 'In:MGE', 'In:MSN_D1', 'In:MSN_D1_D2', 'In:MSN_D2', 'In:Pax6', 'In:Pvalb', 'In:Sncg', 'In:Sst', 'In:Sst_Chodl', 'In:Vip']
 cellCovariateDict = {'Astrocyte':'Astrocyte', 'Choroid_plexus':'Choroid_plexus', 'Endothelial':'Endothelial', 'Ependymal':'Ependymal', 'Excitatory_neuron':excitatory_cells, 'Inhibitory_neuron':inhibitory_cells, 'Lymphoid':'Lymphoid', 'Microglia':'Microglia', 'OPC':'OPC', 'Oligodendrocyte':'Oligodendrocyte', 'Vascular_stromal':'Pericyte'}
+
+ct_props = cellCovariateDict[args.cellType] # If cellType='Astrocyte', then ct_props will be 'Astrocyte' proportions, if ex/in_neurons, then the above list of proportions are included.
 ```
 
 ```

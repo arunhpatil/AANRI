@@ -101,15 +101,17 @@ plink2 \
   #--maf 0.01 \
 
   ```
-</Br>
+  
 
 Total number of SNPs before conversion: `8,493,350` FY23_FY24_FY25_MAF05.bim </Br>
 Total number of SNPs after conversion: `8,493,350` aanri_072826_genotype_qc.bim </Br>
 
 ## preparatory - phenotype processing
 
-The h5ad file was initially processed to include:
-a. FID and IID columns in the .obs (observations) by matching the BrNums, so the downstream process is easier for filtering cells and perform TWAS analysis pipeline
+The Shell script to execute this section is located under `AANRI/1_src/template_code/0_create_datasets.sh`
+
+The h5ad file was initially processed to include:  
+a. FID and IID columns in the .obs (observations) by matching the BrNums, so the downstream process is easier for filtering cells and perform TWAS analysis pipeline.  
 b. The .var is updated to include gene names and gene coordinates. This is required to fetch gene coordinates as input for GCTA and others. So, the first four columns include the #chr, start, end, and gene_id columns.  
 
 The updated h5ad file is stored in the following path:
@@ -188,7 +190,37 @@ With the above filters applied to caudate - ExNeurons, there are no samples left
 # (0, 34835)
 ```
 
+**Total number of genes passing the criteria:**
+
+Residual expression:</Br>
+
+|     Celltype      |   Caudate |   DLPFC |   Hippo |
+|:------------------|----------:|--------:|--------:|
+| Astrocyte         |      1799 |    1377 |    1686 |
+| Excitatory_neuron |         0 |    2283 |    1714 |
+| Inhibitory_neuron |      2402 |    2253 |    1719 |
+| Microglia         |      1133 |     976 |    1227 |
+| Oligodendrocyte   |      1614 |    1304 |    1679 |
+| OPC               |      1420 |    1390 |    1585 |
+
+
+Raw counts (i.e., logCPM):</Br>
+
+|     Celltype      |   Caudate |   DLPFC |   Hippo |
+|:------------------|----------:|--------:|--------:|
+| Astrocyte         |      1918 |    1406 |    1699 |
+| Excitatory_neuron |         0 |    2405 |    1826 |
+| Inhibitory_neuron |      2554 |    2338 |    1787 |
+| Microglia         |      1153 |    1002 |    1260 |
+| Oligodendrocyte   |      1679 |    1410 |    1736 |
+| OPC               |      1435 |    1441 |    1643 |
+
+
+NOTE: celltype such as `Choroid_plexus`, `Endothelial`, `Ependymal`, `Lymphoid` and `Vascular_stromal` were not included in the analysis, as per recommendation. 
+
 ## GCTA - template code and summary
+
+
 ## TWAS: Fusion Weights - template code and summary
 ## TWAS: Fusion associations - template code and summary
 ## SMR: associations - template code and summary

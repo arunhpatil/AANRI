@@ -192,8 +192,54 @@ With the above filters applied to caudate - ExNeurons, there are no samples left
 
 **Total number of genes passing the criteria:**
 
-Residual expression:</Br>
+|     Celltype      |   Caudate |   DLPFC |   Hippo |
+|:------------------|----------:|--------:|--------:|
+| Astrocyte         |     20128 |   18776 |   19930 |
+| Excitatory_neuron |     0.    |   21262 |   21095 |
+| Inhibitory_neuron |     21141 |   20943 |   20892 |
+| Microglia         |     16362 |   15082 |   16269 |
+| Oligodendrocyte   |     16841 |   16134 |   16804 |
+| OPC               |     19257 |   18491 |   19457 |
 
+The counts include table header.
+
+NOTE: celltype such as `Choroid_plexus`, `Endothelial`, `Ependymal`, `Lymphoid` and `Vascular_stromal` were not included in the analysis, as per recommendation. 
+
+## GCTA - template code and summary
+
+**GCTA (Genome-wide Complex Trait Analysis)**
+
+The template code for `DLPFC` is provided in `AANRI/1_src/template_code/1_twas_gcta_residual_dlpfc.sh`.  
+
+Internal commands:  
+Create a genotype of 1Mb across the gene start and end.  
+`cmd = f"{plinkPath} --bfile {genotype} --chr {chromo} --from-bp {region_start} --to-bp {region_end} --make-bed --out {genotype_file}"`
+
+Create Genetic Relationship Matrix (GRM):  
+`cmd = [gctaPath, "--bfile", str(genotype_file), "--make-grm", "--out", str(grm_file)]`  
+
+GCTA-GREML: Estimate variance explained by all the SNPs:  
+`cmd = [gctaPath, "--grm", str(grm_file), "--pheno", str(mir_file), "--covar", str(covar_d), "--qcovar", str(covar_q), "--reml", "--out", str(results_file)]`.   
+Perform a REML (restricted maximum likelihood) analysis.
+
+**Filter significant genes (P < 0.05)**:  
+GCTA-GREML heritability analysis of gene expression, a significant result means that the observed variation in that gene's expression across individuals has a statistically detectable genetic component.  
+
+In other words, for a gene g:  
+
+$$
+h_g^2 = \frac{\sigma_g^2}{\sigma_g^2 + \sigma_e^2}
+$$
+
+where:  
+- $\sigma_g^2$ = variance in expression attributable to measured genetic similarity
+- $\sigma_e^2$ = residual/non-genetic variance
+- $h_g^2$ = SNP-based heritability of the gene's expression. 
+  
+
+Table below summarizes the list of significant genes:
+
+Residual expression:  
 |     Celltype      |   Caudate |   DLPFC |   Hippo |
 |:------------------|----------:|--------:|--------:|
 | Astrocyte         |      1799 |    1377 |    1686 |
@@ -215,11 +261,7 @@ Raw counts (i.e., logCPM):</Br>
 | Oligodendrocyte   |      1679 |    1410 |    1736 |
 | OPC               |      1435 |    1441 |    1643 |
 
-
-NOTE: celltype such as `Choroid_plexus`, `Endothelial`, `Ependymal`, `Lymphoid` and `Vascular_stromal` were not included in the analysis, as per recommendation. 
-
-## GCTA - template code and summary
-
+The counts doesn't include table header.
 
 ## TWAS: Fusion Weights - template code and summary
 ## TWAS: Fusion associations - template code and summary

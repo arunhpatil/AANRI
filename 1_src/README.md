@@ -287,7 +287,8 @@ The eQTL analysis involving TensorQTL was conducted by Dr. Dongsan Kim. The raw 
 /mnt/pv_compute/dongsan/datasets/AANRI/eQTL/DLPFC_Celltype_aggregated_with_RPSgenes_final
 /mnt/pv_compute/dongsan/datasets/AANRI/eQTL/hippo_Celltype_aggregated_with_RPSgenes_final
 ```
-The folders consists of nominal and permutation based eQTL results. The nominal files were executed in two batches, i.e., with and without local ancestry as covariates. These files were transferred to individual brain region and their corresponding celltypes on JHPCE. Two sub-directories were created namely `local_ancestry` and `base_covariates`, where nominal eQTL results were transferred for covariates with and without local ancestry, respectively. The directory structure and path is as follows:<br>
+The folders consists of nominal and permutation based eQTL results. The nominal files were executed in two batches, i.e., with and without local ancestry as covariates. These files were transferred to individual brain region and their corresponding celltypes on JHPCE. Two sub-directories were created namely `local_ancestry` and `base_covariates`, where nominal eQTL results were transferred for covariates with and without local ancestry, respectively. The directory structure and path is as follows:  
+  
 Path: `/dcs04/lieber/hwanglab/Arun/snRNA_aanri/raw_data_dongsan/eQTL_all`
 ```
 .

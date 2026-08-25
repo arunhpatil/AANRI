@@ -9,7 +9,7 @@ All the codes contained in this repository are those that can be found under `1_
 3. [Genome-wide Complex Trait Analysis](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#gcta---template-code-and-summary)
 4. [TWAS: Fusion Weights](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#twas-fusion-weights---template-code-and-summary)
 5. [TWAS: Fusion associations](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#twas-fusion-associations---template-code-and-summary)
-6. [TensorQTL: eQTL-preprocessing](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#eqtl-processing---template-code-and-summary)
+6. [TensorQTL: eQTL-preprocessing](https://github.com/arunhpatil/AANRI/tree/main/1_src#eqtl-processing---template-code-and-summary)
 7. [SMR: associations](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#smr-associations---template-code-and-summary)
 8. [ColocABF](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#colocabf---template-code-and-summary)
 
@@ -281,13 +281,13 @@ The counts doesn't include table header.
 ## TWAS: Fusion associations - template code and summary
 ## eQTL: processing - template code and summary
 
-The eQTL analysis involving TensorQTL was conducted by Dr. Dongsan Kim. The raw files were made available at Server5 at the following location. 
+The eQTL analysis involving TensorQTL was conducted by Dr. Dongsan Kim. The raw result files were made available at Server5 at the following location. 
 ```
 /mnt/pv_compute/dongsan/datasets/AANRI/eQTL/caudate_Celltype_aggregated_with_RPSgenes_final
 /mnt/pv_compute/dongsan/datasets/AANRI/eQTL/DLPFC_Celltype_aggregated_with_RPSgenes_final
 /mnt/pv_compute/dongsan/datasets/AANRI/eQTL/hippo_Celltype_aggregated_with_RPSgenes_final
 ```
-The folders consists of nominal and permutation based eQTL results. The nominal files were executed in two batches, i.e., with and without local ancestry as covariates. These files were transferred to individual brain region and their corresponding celltypes on JHPCE. Two sub-directories were created namely `local_ancestry` and `base_covariates`, where nominal eQTL results were transferred for covariates with and without local ancestry, respectively. The directory structure and path is as follows:
+The folders consists of nominal and permutation based eQTL results. The nominal files were executed in two batches, i.e., with and without local ancestry as covariates. These files were transferred to individual brain region and their corresponding celltypes on JHPCE. Two sub-directories were created namely `local_ancestry` and `base_covariates`, where nominal eQTL results were transferred for covariates with and without local ancestry, respectively. The directory structure and path is as follows:<br>
 Path: `/dcs04/lieber/hwanglab/Arun/snRNA_aanri/raw_data_dongsan/eQTL_all`
 ```
 .

@@ -359,6 +359,45 @@ DLPFC/
 │       └── DLPFC_WGS_Astrocyte_logCPM_local_ancestry.cis_qtl_pairs.9.parquet
 etc..
 ```
+
+For the SMR/coloc analysis, the nominal eQTLs in parquet files for each chromosome were combined to one file using script `3_combining_eQTL.py` in `1_src` directory. The scripts reads each parquet using `duckdb` package (increased efficiency), and concatenates them using Pandas.  
+
+```
+>>> df = pd.read_parquet("DLPFC_WGS_Astrocyte_logCPM.cis_qtl_pairs.22.parquet")
+>>> df
+            phenotype_id          variant_id  start_distance        af  ma_samples  ma_count  pval_nominal     slope  slope_se
+0        ENSG00000290397  chr22:10843943:T:C         -983579  0.918919          12        12      0.715712  0.164319  0.448907
+1        ENSG00000290397  chr22:10849890:A:C         -977632  0.885135          17        17      0.809842 -0.101206  0.418608
+2        ENSG00000290397  chr22:10849945:C:A         -977577  0.770270          34        34      0.531529  0.206222  0.327554
+3        ENSG00000290397  chr22:10850883:C:A         -976639  0.939189           9         9      0.490412 -0.362050  0.521519
+4        ENSG00000290397  chr22:10850893:C:T         -976629  0.824324          26        26      0.869154 -0.055686  0.336494
+
+```
+The variant_id was replaced to `dbSNP:rs_ID`, added variant: chrom, Pos, allele1 (effect allele), allele2 reading the Genotype BIM file. Further computed `fdr` using `multipletests` function from `statsmodel` Python package. The conversion is completed for all regions and celltypes. The base_covariates results are stored with file name `DLPFC_Astrocyte_tsqtl.nominal.txt`, while the `DLPFC_Astrocyte_.lan.tsqtl.nominal.txt` file is for `local ancestry (lan)`. 
+
+`df.loc[valid, "fdr"] = multipletests(df.loc[valid, "pval_nominal"],method="fdr_bh")[1]`. 
+
+```
+$ pwd
+/dcs04/lieber/hwanglab/Arun/snRNA_aanri/3_analysis/DLPFC/Astrocyte/residuals/eQTL
+.
+├── DLPFC_Astrocyte_.lan.tsqtl.nominal.txt
+└── DLPFC_Astrocyte_tsqtl.nominal.txt
+
+head DLPFC_Astrocyte_tsqtl.nominal.txt | column -t
+phenotype_id     variant_id    start_distance  af          ma_samples  ma_count  pval_nominal          slope        slope_se    snp             maf  variant_chrom  variant_pos  allele1  allele2  fdr
+ENSG00000238009  rs1434509538  -118879         0.91891897  12          12        0.7843163003942315    0.110552564  0.40198633  chr1:14843:G:A  0.5  1              14843        A        G        0.9978769812409582
+ENSG00000238009  rs866639523   -117442         0.945946    8           8         0.07545377341255818   0.8399191    0.4637025   chr1:16280:T:C  0.5  1              16280        C        T        0.9537443981605194
+ENSG00000238009  rs774196730   -116897         0.9391892   9           9         0.009834249713378727  -1.3295406   0.4974234   chr1:16825:C:A  0.5  1              16825        A        C        0.8438787875295181
+ENSG00000238009  rs201535981   -116337         0.7567568   36          36        0.2740505190050702    -0.33532202  0.3035649   chr1:17385:G:A  0.5  1              17385        A        G        0.9839866910750467
+ENSG00000238009  rs200784459   -116324         0.9054054   14          14        0.48801417003094405   0.2831508    0.4056121   chr1:17398:C:A  0.5  1              17398        A        C        0.9925521415143639
+ENSG00000238009  rs747093451   -116314         0.9324325   10          10        0.13706257698434146   0.65092975   0.43152413  chr1:17408:C:G  0.5  1              17408        G        C        0.9699466119237674
+ENSG00000238009  rs866150608   -116163         0.87162167  19          19        0.9005079851421448    -0.04926391  0.39226657  chr1:17559:G:C  0.5  1              17559        C        G        0.9993303866841581
+ENSG00000238009  rs377698370   -116128         0.8648649   20          20        0.743929954308377     0.11680671   0.35582238  chr1:17594:C:T  0.5  1              17594        T        C        0.9973206854164085
+ENSG00000238009  rs71260069    -116025         0.7567568   36          36        0.2185762969697761    -0.3845101   0.30902007  chr1:17697:G:C  0.5  1              17697        C        G        0.9799183842406497
+```
+
+
 ## SMR: associations - template code and summary
 ## ColocABF - template code and summary
 

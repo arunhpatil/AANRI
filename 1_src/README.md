@@ -4,13 +4,13 @@ snRNA sequencing QTL and TWAS analysis pipeline - African Ancestry Neuroscience 
 All the codes contained in this repository are those that can be found under `1_source` directory (see tree below). 
 
 ## Table of contents
-1. [Genotype processing](https://github.com/arunhpatil/AANRI/tree/main/1_src#-genotype-processing-)
-2. [Preparatory - phenotype processing](https://github.com/arunhpatil/AANRI/tree/main/1_src/README.md#preparatory---phenotype-processing)
-3. [Genome-wide Complex Trait Analysis](https://github.com/arunhpatil/AANRI/tree/main/1_src/README.md#gcta---template-code-and-summary)
-4. [TWAS: Fusion Weights](https://github.com/arunhpatil/AANRI/tree/main/1_src/README.md#twas-fusion-weights---template-code-and-summary)
-5. [TWAS: Fusion associations](https://github.com/arunhpatil/AANRI/tree/main/1_src/README.md#twas-fusion-associations---template-code-and-summary)
-6. [SMR: associations](https://github.com/arunhpatil/AANRI/tree/main/1_src/README.md#smr-associations---template-code-and-summary)
-8. [ColocABF](https://github.com/arunhpatil/AANRI/tree/main/1_src/README.md#colocabf---template-code-and-summary)
+1. [Genotype processing](https://github.com/arunhpatil/AANRI/blob/main/1_src#-genotype-processing-)
+2. [Preparatory - phenotype processing](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#preparatory---phenotype-processing)
+3. [Genome-wide Complex Trait Analysis](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#gcta---template-code-and-summary)
+4. [TWAS: Fusion Weights](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#twas-fusion-weights---template-code-and-summary)
+5. [TWAS: Fusion associations](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#twas-fusion-associations---template-code-and-summary)
+6. [SMR: associations](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#smr-associations---template-code-and-summary)
+8. [ColocABF](https://github.com/arunhpatil/AANRI/blob/main/1_src/README.md#colocabf---template-code-and-summary)
 
 
 ## <u> **Genotype processing** </u>:

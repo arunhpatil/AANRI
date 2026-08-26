@@ -397,6 +397,20 @@ ENSG00000238009  rs377698370   -116128         0.8648649   20          20       
 ENSG00000238009  rs71260069    -116025         0.7567568   36          36        0.2185762969697761    -0.3845101   0.30902007  chr1:17697:G:C  0.24324322   1              17697        C        G        0.9799183842406497
 ```
 
+Number of eQTLs/egenes per cell type across brain regions:
+
+DLPFC (Column 3,4,5 is `FDR` cutoff):  
+|     DLPFC.        |                   BASE covariates                        |
+|:------------------|---------------------------------------------------------:|
+|     Celltype      |  eQTL (q) | eGenes (g) | 0.05 q(g)| 0.01 q(g)| 0.001 q(g)|
+|:------------------|----------:|-----------:|---------:|---------:|----------:|
+| Astrocyte         |      1799 |    1377    |    1686  |    1686  |    1686   |
+| Excitatory_neuron |         0 |    2283    |    1714  |    1686  |    1686   |
+| Inhibitory_neuron |      2402 |    2253    |    1719  |    1686  |    1686   |
+| Microglia         |      1133 |     976    |    1227  |    1686  |    1686   |
+| Oligodendrocyte   |      1614 |    1304    |    1679  |    1686  |    1686   |
+| OPC               |      1420 |    1390    |    1585  |    1686  |    1686   |
+
 
 ## SMR: associations - template code and summary
 ## ColocABF - template code and summary

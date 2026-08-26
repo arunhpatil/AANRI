@@ -400,8 +400,8 @@ ENSG00000238009  rs71260069    -116025         0.7567568   36          36       
 Number of eQTLs/egenes per cell type across brain regions:
 
 DLPFC (Column 3,4,5 is `FDR` cutoff):  
-|     DLPFC.        |                   BASE covariates                        |
-|:------------------|----------:|-----------:|---------:|---------:|----------:|
+
+
 |     Celltype      |  eQTL (q) | eGenes (g) | 0.05 q(g)| 0.01 q(g)| 0.001 q(g)|
 |:------------------|----------:|-----------:|---------:|---------:|----------:|
 | Astrocyte         |      1799 |    1377    |    1686  |    1686  |    1686   |

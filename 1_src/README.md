@@ -281,6 +281,7 @@ The counts doesn't include table header.
 ## TWAS: Fusion associations - template code and summary
 ## eQTL: processing - template code and summary
 
+### Data description and modifications:
 The eQTL analysis involving TensorQTL was conducted by Dr. Dongsan Kim. The raw result files were made available at Server5 at the following location. 
 ```
 /mnt/pv_compute/dongsan/datasets/AANRI/eQTL/caudate_Celltype_aggregated_with_RPSgenes_final
@@ -397,19 +398,31 @@ ENSG00000238009  rs377698370   -116128         0.8648649   20          20       
 ENSG00000238009  rs71260069    -116025         0.7567568   36          36        0.2185762969697761    -0.3845101   0.30902007  chr1:17697:G:C  0.24324322   1              17697        C        G        0.9799183842406497
 ```
 
-Number of eQTLs/egenes per cell type across brain regions:
+### eQTL summary:
 
-DLPFC (Column 3,4,5 is `FDR` cutoff):  
+Number of eQTLs/egenes per Celltype across brain regions, (Column 3,4,5 is `FDR` cutoff):
 
+#### DLPFC (Base covariates):  
 
-|     Celltype      |  eQTL (q) | eGenes (g) | 0.05 q(g)| 0.01 q(g)| 0.001 q(g)|
-|:------------------|----------:|-----------:|---------:|---------:|----------:|
-| Astrocyte         |      1799 |    1377    |    1686  |    1686  |    1686   |
-| Excitatory_neuron |         0 |    2283    |    1714  |    1686  |    1686   |
-| Inhibitory_neuron |      2402 |    2253    |    1719  |    1686  |    1686   |
-| Microglia         |      1133 |     976    |    1227  |    1686  |    1686   |
-| Oligodendrocyte   |      1614 |    1304    |    1679  |    1686  |    1686   |
-| OPC               |      1420 |    1390    |    1585  |    1686  |    1686   |
+|     Celltype      |  eQTL (q)   | eGenes (g) |    0.05 q (g)   |   0.01 q (g)   |  0.001 q (g) |
+|:------------------|------------:|-----------:|----------------:|---------------:|-------------:|
+| Astrocyte         | 107,046,444 |   18,483   |  12,302 (811)   |  7,303 (313)   |  3,367 (132) |
+| Excitatory_neuron | 116,874,884 |   20,117   |  52,424 (2,667) | 29,570 (1,148) | 15,933 (608) |
+| Inhibitory_neuron | 114,795,594 |   19,783   |  46,680 (2,199) | 26,810 (879)   | 16,092 (485) |
+| Microglia         |  91,436,137 |   15,781   |  11,540 (680)   |  6,952 (265)   |  4,552 (119) |
+| Oligodendrocyte   |  92,256,675 |   15,984   |  18,578 (1,182) | 10,418 (503)   |  5,521 (264) |
+| OPC               | 105,281,193 |   18,165   |  15,657 (957)   | 10,451 (412)   |  6,369 (188) |
+
+#### DLPFC (local ancestry):  
+
+|     Celltype      |  eQTL (q)   | eGenes (g) |    0.05 q (g)   |    0.01 q (g)  |  0.001 q (g) |
+|:------------------|------------:|-----------:|----------------:|---------------:|-------------:|
+| Astrocyte         |  99,585,437 |   17,186   |   7,943 (576)   |  3,700 (202)   |  1,842 (91)  |
+| Excitatory_neuron | 107,598,629 |   18,540   |  33,475 (1,834) | 19,440 (823)   | 10,354 (450) |
+| Inhibitory_neuron | 106,163,826 |   18,308   |  34,061 (1,672) | 19,790 (698)   | 10,434 (357) |
+| Microglia         |  85,704,651 |   14,776   |   8,945 (522)   |  5,769 (214)   |  3,673 (95)  |
+| Oligodendrocyte   | 107,046,444 |   18,483   |  12,302 (811)   |  7,303 (313)   |  3,367 (132) |
+| OPC               |  98,167,385 |   16,936   |  10,510 (693)   |  7,011 (290)   |  4,038 (135) |
 
 
 ## SMR: associations - template code and summary

@@ -402,6 +402,8 @@ ENSG00000238009  rs71260069    -116025         0.7567568   36          36       
 
 Number of eQTLs/egenes per Celltype across brain regions, (Column 3,4,5 is `FDR` cutoff):
 
+The summary is obtained from the log .out files in the path (`/dcs04/lieber/hwanglab/Arun/snRNA_aanri/1_source/batch_executables/0_preparatory/0_step_logs` with files `3_combineQTLs_35154178.out` and `3_combineQTLs_35206651.out`). The eQTL (q), is the total eQTL (variant + Gene - combinations), and eGenes (g) is the unique number of genes without any significance thresholds. The `x - q (g)` represents the FDR threshold at 0.05, 0.01 and 0.001 while `q` represents the number of eQTLs, and `g` is number of unique genes at the set thresholds. 
+
 #### DLPFC (Base covariates):  
 
 |     Celltype      |  eQTL (q)   | eGenes (g) |    0.05 q (g)   |   0.01 q (g)    |  0.001 q (g) |

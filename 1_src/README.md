@@ -523,7 +523,7 @@ The summary is obtained from the log .out files in the path (`/dcs04/lieber/hwan
 
 ### SMR - Results:
 
-```
+
 |cell_type         |trait                                                      |gene                            |topSNP     | ProbeChr|EQTL.ID    |   TWAS.Z|   TWAS.P|  TWAS.FDR|     p_SMR|   p_HEIDI|GWAS                                              |
 |:-----------------|:----------------------------------------------------------|:-------------------------------|:----------|--------:|:----------|--------:|--------:|---------:|---------:|---------:|:-------------------------------------------------|
 |Astrocyte         |Depression                                                 |ENSG00000143437_ARNT            |rs74127548 |        1|rs74127548 | -4.22460| 2.39e-05| 0.0305681| 0.0020198| 0.0695834|GCST90476683_MoodDisorders.h.FUSION               |
@@ -537,7 +537,7 @@ The summary is obtained from the log .out files in the path (`/dcs04/lieber/hwan
 |Microglia         |Benign_neoplasm_of_brain_and_other_parts_of_nervous_system |ENSG00000185022_MAFF            |rs4820346  |       22|rs6001388  |  4.39790| 1.09e-05| 0.0097446| 0.0304880| 0.5323270|GCST90477283_Brain_Cerebrovascular.h.FUSION       |
 |OPC               |Chronic_fatigue_syndrome                                   |ENSG00000175611_ERCC6L2-AS1     |rs2149564  |        9|rs2149564  | -4.22930| 2.34e-05| 0.0303030| 0.0303126| 0.7377194|GCST90479177_OtherNeurological.h.FUSION           |
 
-```
+
 
 ## ColocABF - template code and summary
 

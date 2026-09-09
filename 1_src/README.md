@@ -495,7 +495,7 @@ The summary is obtained from the log .out files in the path (`/dcs04/lieber/hwan
 >>> 
 ```
 
-# Changed MAF/AF (not exactly MAF) and slope:
+### Changed MAF/AF (not exactly MAF) and slope:
 ```
 >>> import pandas as pd
 >>> df = pd.read_parquet("DLPFC_Excitatory_neuron_.lan.tsqtl.nominal.variant.parquet")

@@ -521,5 +521,23 @@ The summary is obtained from the log .out files in the path (`/dcs04/lieber/hwan
 >>> 
 ```
 
+### SMR - Results:
+
+```
+|cell_type         |trait                                                      |gene                            |topSNP     | ProbeChr|EQTL.ID    |   TWAS.Z|   TWAS.P|  TWAS.FDR|     p_SMR|   p_HEIDI|GWAS                                              |
+|:-----------------|:----------------------------------------------------------|:-------------------------------|:----------|--------:|:----------|--------:|--------:|---------:|---------:|---------:|:-------------------------------------------------|
+|Astrocyte         |Depression                                                 |ENSG00000143437_ARNT            |rs74127548 |        1|rs74127548 | -4.22460| 2.39e-05| 0.0305681| 0.0020198| 0.0695834|GCST90476683_MoodDisorders.h.FUSION               |
+|Excitatory_neuron |Stroke_or_Transient_Ischemic_Attack                        |ENSG00000086189_DIMT1           |rs1301065  |        5|rs247260   | -4.25626| 2.08e-05| 0.0446576| 0.0085119| 0.2619749|GCST90479382_Brain_Cerebrovascular.h.FUSION       |
+|Excitatory_neuron |Feeling_unsatisfied_or_not_rested_by_your_nights_sleep     |ENSG00000145685_LHFPL2          |rs73120612 |        5|rs73120612 | -4.35220| 1.35e-05| 0.0096615| 0.0204335| 0.1429448|GCST90479446_SleepDisorders.h.FUSION              |
+|Excitatory_neuron |Feeling_unsatisfied_or_not_rested_by_your_nights_sleep     |ENSG00000127561_SYNGR3          |rs4786779  |       16|rs11863652 | -4.42420| 9.70e-06| 0.0096615| 0.0207974| 0.2231612|GCST90479446_SleepDisorders.h.FUSION              |
+|Excitatory_neuron |Depression                                                 |ENSG00000235615_ENSG00000235615 |rs13026947 |        2|rs13035892 | -4.43790| 9.10e-06| 0.0194948| 0.0423388| 0.3411923|GCST90476683_MoodDisorders.h.FUSION               |
+|Inhibitory_neuron |Alzheimers_or_Other_Dementia                               |ENSG00000124588_NQO2            |rs60514348 |        6|rs55723270 |  4.37062| 1.24e-05| 0.0261392| 0.0489635| 0.7210291|GCST90477006_Cognitive_Neurodegenerative.h.FUSION |
+|Microglia         |Depression                                                 |ENSG00000136925_TSTD2           |rs7045221  |        9|rs56281459 |  4.28578| 1.82e-05| 0.0162708| 0.0010834| 0.3451383|GCST90476879_MoodDisorders.h.FUSION               |
+|Microglia         |Central_or_nonobstroctive_sleep_apnea                      |ENSG00000232684_ATP11A-AS1      |rs280795   |       13|rs280795   |  4.32030| 1.56e-05| 0.0139464| 0.0212766| 0.1198991|GCST90477486_SleepDisorders.h.FUSION              |
+|Microglia         |Benign_neoplasm_of_brain_and_other_parts_of_nervous_system |ENSG00000185022_MAFF            |rs4820346  |       22|rs6001388  |  4.39790| 1.09e-05| 0.0097446| 0.0304880| 0.5323270|GCST90477283_Brain_Cerebrovascular.h.FUSION       |
+|OPC               |Chronic_fatigue_syndrome                                   |ENSG00000175611_ERCC6L2-AS1     |rs2149564  |        9|rs2149564  | -4.22930| 2.34e-05| 0.0303030| 0.0303126| 0.7377194|GCST90479177_OtherNeurological.h.FUSION           |
+
+```
+
 ## ColocABF - template code and summary
 

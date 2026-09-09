@@ -1,0 +1,32 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"conda_R/4.5.x"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "conda_R/4.5.x"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+Lmod has detected the following error: The following module(s) are unknown:
+"plink2"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "plink2"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+No modules loaded
+/var/spool/slurm/d/job35457264/slurm_script: line 20: conda: command not found
+Traceback (most recent call last):
+  File "/dcs04/lieber/hwanglab/Arun/miRQTL_pipeline/source/software/miRQTL/TWAS/twas_pipeline.py", line 11, in <module>
+    from libs.parallel_GCTA import heritability_test
+  File "/dcs04/lieber/hwanglab/Arun/miRQTL_pipeline/source/software/miRQTL/TWAS/libs/parallel_GCTA.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
